@@ -1,16 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{(profiles | async)?.firstName}} {{(profiles | async)?.lastName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Scylla</h2>
-  <p>
-    Scylla es una aplicación para guardar tus contraseñas propias o de amigos o familia de cualquier cuenta que quieras.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <!--{{(profiles | async)?.username}}  -->
+
+  <h2>Credenciales</h2>
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          Cuenta
+        </ion-col>
+        <ion-col>
+          {{(credentials | async)?.account}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <button ion-button clear block (click)="addCredential()" color="primary">Create Credential</button>
 </ion-content>

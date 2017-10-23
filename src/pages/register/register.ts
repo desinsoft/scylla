@@ -6,8 +6,7 @@ import { User } from '../../models/user';
 
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
-  providers: [AngularFireAuth]
+  templateUrl: 'register.html'
 })
 export class RegisterPage {
   
@@ -16,11 +15,9 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth) {
   }
 
-  async register(user: User){
-    alert("pasando por register");
+  register(user: User){
     try {
-      const result = await this.auth.auth.createUserWithEmailAndPassword(user.email, user.password);
-      console.log(result);
+      this.auth.auth.createUserWithEmailAndPassword(user.email, user.password);
     }
     catch(e){
       console.error(e);
