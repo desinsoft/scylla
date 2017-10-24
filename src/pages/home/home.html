@@ -9,14 +9,14 @@
 
   <h2>Credenciales</h2>
   <ion-grid>
-      <ion-row>
-        <ion-col>
-          Cuenta
-        </ion-col>
-        <ion-col>
-          {{(credentials | async)?.account}}
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-row ion-item *ngFor="let credential of credentials | async">
+      <ion-col>
+        Cuenta
+      </ion-col>
+      <ion-col>
+          {{credential.account}} - {{credential.password}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <button ion-button clear block (click)="addCredential()" color="primary">Create Credential</button>
 </ion-content>
