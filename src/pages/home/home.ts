@@ -17,8 +17,9 @@ export class HomePage {
 
   profileData: AngularFireObject<Profile>
   profiles: Observable<any>;
-  credentials: any;
-  credential = {} as Credentials;
+  credentials: Observable<any>;
+  credential: any;
+  credential2: Observable<any>;
 
   constructor(public navCtrl: NavController, 
     private auth: AngularFireAuth, 
@@ -33,26 +34,32 @@ export class HomePage {
         }).present();
         //console.log(this.dataBase.object(`profile/${data.uid}`));
         this.profiles = this.dataBase.object(`profile/${data.uid}`).valueChanges();
-        this.dataBase.list(`wallet/${data.uid}`).valueChanges().subscribe(res => {
+       /*
+        this.dataBase.list(`wallet/${data.uid}/credentials`).valueChanges().subscribe(res => {
           console.log(res);
         });
-       this.credentials = this.dataBase.list(`wallet/${data.uid}/credentials`).snapshotChanges().map(credentials => {
-        console.log(credentials.map(c => ({ key: c.payload.key, value: c.payload.val() })));
-        this.credentials = credentials.map(c => ({ key: c.payload.key, value: c.payload.val() }));
-        console.log(this.credentials);
-        for (var index = 0; index < this.credentials.length; index++) {
-          let values = {} as any;
+       */
+       this.credentials = this.dataBase.list(`wallet/${data.uid}/credentials`).valueChanges();
+       console.log(this.credentials);
+       /*
+       .map(credentials => {
+          console.log(credentials.map(c => ({ key: c.payload.key, value: c.payload.val() })));
+          this.credential = credentials.map(c => ({ key: c.payload.key, value: c.payload.val() }));
+          console.log(this.credential);
+          for (var index = 0; index < this.credential.length; index++) {
+            this.credentials[index] = this.credential[index].value;
+          }
+        
+          console.log(this.credential2);
+          this.credential2 = this.credentials;
+          console.log(this.credentials);
+          console.log(this.credential2);
+          console.log(this.credential);
 
-          values.account = this.credentials[index].value.account;
-          values.hash = this.credentials[index].value.hash;
-          values.password = this.credentials[index].value.password;
-          
-          console.log(values);
-          this.credential += values;
-        }
-        console.log(this.credentials);
-       });
-       console.log(this.credential);
+        })
+        ;
+        */
+
         //this.profileData.query (profile.);
       }
       else{

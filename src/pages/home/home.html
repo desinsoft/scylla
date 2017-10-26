@@ -8,15 +8,19 @@
   <!--{{(profiles | async)?.username}}  -->
 
   <h2>Credenciales</h2>
-  <ion-grid>
-    <ion-row ion-item *ngFor="let credential of credentials | async">
-      <ion-col>
-        Cuenta
-      </ion-col>
-      <ion-col>
-          {{credential.account}} - {{credential.password}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <button ion-button clear block (click)="addCredential()" color="primary">Create Credential</button>
+
+  <div class="row header">
+    <div class="col">Cuenta</div>
+    <div class="col">Contraseña</div>
+    <div class="col">Opciones</div>
+  </div>
+  <div class="row" *ngFor="let data of credentials | async">
+    <div class="col">{{data.account}}</div>
+    <div class="col">{{data.password}}</div>
+    <div class="col">
+      <button ion-button color="secondary">View</button>
+      <button ion-button color="blue">Actualizar</button>
+    </div>
+  </div>
+  <button ion-button block (click)="addCredential()" color="primary">Create Credential</button>
 </ion-content>
