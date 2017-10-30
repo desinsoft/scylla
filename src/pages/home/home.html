@@ -18,8 +18,9 @@
     <div class="col">{{data.account}}</div>
     <div class="col">{{data.password}}</div>
     <div class="col">
-      <button ion-button color="secondary">View</button>
-      <button ion-button color="blue">Actualizar</button>
+      <button ion-button color="secondary" (click)="viewCredential(data)">View</button>
+      <button ion-button color="blue" (click)="updateCredential(data)">Actualizar</button>
+      <button ion-button color="danger" (click)="deleteCredential(data.accountID)">Eliminar</button>
     </div>
   </div>
   <button ion-button block (click)="addCredential()" color="primary">Create Credential</button>

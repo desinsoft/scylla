@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { CredentialsPage } from '../pages/credentials/credentials';
+import { Encryption } from '../providers/encryption';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -55,6 +56,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
   providers: [
     StatusBar,
     SplashScreen,
+    Encryption,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
