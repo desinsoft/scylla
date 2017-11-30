@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,14 +15,14 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Email Address</ion-label>
+    <ion-label floating>Email</ion-label>
     <ion-input type="text" [(ngModel)]="user.email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Password</ion-label>
+    <ion-label floating>Contraseña</ion-label>
     <ion-input type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
 
-  <button ion-button (click)="register(user)">Register</button>
+  <button ion-button (click)="register(user)">Registrar</button>
 </ion-content>

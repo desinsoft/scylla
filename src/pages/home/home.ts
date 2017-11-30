@@ -33,16 +33,10 @@ export class HomePage {
     this.auth.authState.subscribe(data => {
       if(data && data.email && data.uid){
         this.toas.create({
-          message: `Welcome to APP_NAME, ${data.email}`,
+          message: `Welcome to Scylla, ${data.email}`,
           duration: 3000
         }).present();
-        //console.log(this.dataBase.object(`profile/${data.uid}`));
         this.profiles = this.dataBase.object(`profile/${data.uid}`).valueChanges();
-       /*
-        this.dataBase.list(`wallet/${data.uid}/credentials`).valueChanges().subscribe(res => {
-          console.log(res);
-        });
-       */
        this.credentials = this.dataBase.list(`wallet/${data.uid}/credentials`).valueChanges();
        console.log(this.credentials);
       }
@@ -59,23 +53,13 @@ export class HomePage {
     this.navCtrl.push(CredentialsPage);
   }
 
-  /*
-  updateCredential(accountID){
-    alert(JSON.stringify(accountID));
-    this.auth.authState.take(1).subscribe(auth => {
-      this.dataBase.object(`wallet/${auth.uid}/credentials/${this.credentials.accountID}`).set(this.credentials)
-      .then(() => this.navCtrl.setRoot(HomePage))
-    });
-  }
-  */
-
   viewCredential(credentialObj) {
     var passwordHash = this.encryption.getPasswordEcrypted(credentialObj.password);
     console.log(passwordHash);
     var password = passwordHash.split(":");
     const alert = this.alertCtrl.create({
       title: 'Contraseña actual',
-      subTitle: 'Su contraseña actualmente es: ' + password[0],
+      subTitle: '<br/> Su contraseña actualmente es: <b>' + password[0] + '</b>',
       buttons: ['Aceptar']
     });
     alert.present();
@@ -103,9 +87,8 @@ export class HomePage {
           handler: data => {
             this.auth.authState.take(1).subscribe(auth => {
               this.credential = credentialObj;
-              console.log(data.password);
               this.credential.hash = this.encryption.setHash(credentialObj.account, 'hash');
-              this.credential.password = this.encryption.setPasswordEncrypted(data.name + ":", this.credential.hash).toString();
+              this.credential.password = this.encryption.setPasswordEncrypted(data.newpassword + ":", this.credential.hash).toString();
               this.dataBase.object(`wallet/${auth.uid}/credentials/${credentialObj.accountID}`).set(this.credential)
               .then(() => this.navCtrl.setRoot(HomePage))
             });
@@ -117,6 +100,8 @@ export class HomePage {
   }
 
   deleteCredential(accountID){
-    alert(accountID);
+    this.auth.authState.take(1).subscribe(auth => {
+      this.dataBase.object(`wallet/${auth.uid}/credentials/${accountID}`).remove();
+    });
   }
 }
