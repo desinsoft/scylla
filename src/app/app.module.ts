@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { Scylla } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -25,7 +25,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 
 @NgModule({
   declarations: [
-    MyApp,
+    Scylla,
     AboutPage,
     ContactPage,
     HomePage,
@@ -39,11 +39,11 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     BrowserModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(Scylla)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Scylla,
     AboutPage,
     ContactPage,
     HomePage,
