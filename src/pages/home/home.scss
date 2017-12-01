@@ -3,6 +3,7 @@ page-home {
         background-color:#34495e;
         color: #fff;
         font-weight: bold;
+        max-width :30% !important;
     }
     
     .col {
@@ -14,9 +15,11 @@ page-home {
     
     .col:last-child {
         border-right: solid 1px grey;
+        max-width :40% !important;
     }
     
     .row:last-child .col {
         border-bottom: solid 1px grey;
+        max-width :40% !important;
     }
 }
