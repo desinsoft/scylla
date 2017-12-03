@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import CryptoJS from 'crypto-js';
-import {Md5} from 'ts-md5/dist/md5';
 
 @Injectable()
 export class Encryption{

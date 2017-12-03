@@ -7,9 +7,9 @@ import {Observable} from 'rxjs/Observable';
 import { Profile } from '../../models/profile';
 import { Credentials } from '../../models/credentials';
 import { CredentialsPage } from '../../pages/credentials/credentials';
+import { LoginPage } from '../../pages/login/login';
 
 import { Encryption } from '../../providers/encryption';
-import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'page-home',
@@ -103,5 +103,12 @@ export class HomePage {
     this.auth.authState.take(1).subscribe(auth => {
       this.dataBase.object(`wallet/${auth.uid}/credentials/${accountID}`).remove();
     });
+  }
+
+  logOut(){
+    this.auth.auth.signOut().catch(function(error){
+      alert(error);
+    })
+    this.navCtrl.setRoot(LoginPage);
   }
 }

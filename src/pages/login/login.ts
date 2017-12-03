@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { RegisterPage } from '../../pages/register/register';
@@ -14,23 +14,38 @@ import { User } from '../../models/user';
 export class LoginPage {
   user = {} as User;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth,
+    private alertCtrl: AlertController) {
   }
 
   async login(user: User){
-    try{
-      const result = this.auth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if(result){
+      this.auth.auth.signInWithEmailAndPassword(user.email, user.password).then(auth => {
         this.navCtrl.setRoot(TabsPage);
-      }
-    }
-    catch(e){
-      console.log(e);
-    }
+      }).catch(function(error){
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') {
+          alert('Ohh!. El usuario o la contraseña son incorrectas.');
+        } else {
+          alert(errorMessage);
+        }
+      });
+      /**
+       * this.auth.auth.onAuthStateChanged(function(user) {
+        if (user !== null) {
+          this.goHomePage();
+        }
+      });
+       */
+      //this.navCtrl.setRoot(TabsPage);
   }
 
   register(){
     this.navCtrl.push(RegisterPage)
   }
-
+  
+  goHomePage(){
+    this.navCtrl.setRoot(TabsPage);
+  }
 }

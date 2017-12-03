@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>{{(profiles | async)?.firstName}} {{(profiles | async)?.lastName}}</ion-title>
+    <ion-title class="title-home">{{(profiles | async)?.firstName}} {{(profiles | async)?.lastName}}</ion-title>
+    <ion-title class="logout pull-rigth" (click)="logOut()"> <ion-icon name="log-out"></ion-icon> </ion-title>
   </ion-navbar>
 </ion-header>
 

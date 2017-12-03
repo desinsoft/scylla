@@ -5,7 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 
 import { Profile } from '../../models/profile';
-import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-profile',
