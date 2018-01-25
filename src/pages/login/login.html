@@ -9,21 +9,29 @@
   <ion-navbar>
     <ion-title>login</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-  <ion-item>
-    <ion-label floating>Email</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
-
-  <button ion-button (click)="login(user)">Login</button>
-  <button ion-button (click)="register()"color="light">Register</button>
+<ion-content padding  class="login-content">
+  <ion-row class="main-header big-padding-left-right" align-items-center>
+      <ion-col class="col-padding-cancel-all">
+        <div class="main-header-logo"></div>
+      </ion-col>
+      <ion-row class="homeScylla">
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+          </ion-item>
+      
+          
+          <a (click)="register()" class="register">Forget your password?</a>
+          <button ion-button block (click)="login(user)" class="btn-login">Login</button>
+          <button ion-button block (click)="register()"color="light" class="btn-register">Register</button>
+        </ion-row>
+    </ion-row>
 </ion-content>

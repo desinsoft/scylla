@@ -1,3 +1,42 @@
 page-login {
+    .login-content{
+        background: $gray-light;
+        .row{
+          padding:0 16px;
+          position: absolute;
+          width: 70%;
+        }
+    }
 
+    .main-header{
+        .main-header-logo{
+            background-image: url('../assets/img/logo.png');
+            background-repeat: no-repeat;
+            height: 200px;
+            width: 200px;
+            margin-left: 500px;
+        }
+    }
+    .register {
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding:0 16px;
+    }
+
+    .homeScylla{
+        margin-top: 500px;
+        margin-left: 350px;
+        padding: 0 50px; 
+    }
+
+    .btn-login{
+        width: 50%;
+    }
+
+    .btn-register{
+        width: 50%;
+    }
 }
