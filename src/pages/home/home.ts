@@ -67,16 +67,16 @@ export class HomePage {
 
   updateCredential(credentialObj) {
     const alert = this.alertCtrl.create({
-      title: 'Actualizar contraseña',
+      title: 'Recover your password',
       inputs: [
         {
           name: 'newpassword',
-          placeholder: 'Nueva contraseña'
+          placeholder: 'New password'
         }
       ],
       buttons: [
         {
-          text: 'Cancelar',
+          text: 'Cancel',
           role: 'cancel',
           handler: data => {
             console.log('Cancel clicked');

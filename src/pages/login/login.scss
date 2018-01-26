@@ -4,7 +4,6 @@ page-login {
         .row{
           padding:0 16px;
           position: absolute;
-          width: 70%;
         }
     }
 
@@ -12,24 +11,22 @@ page-login {
         .main-header-logo{
             background-image: url('../assets/img/logo.png');
             background-repeat: no-repeat;
-            height: 200px;
-            width: 200px;
-            margin-left: 500px;
+            height: 100px;
+            width: 100px;
+            margin-left: 70px;
         }
     }
     .register {
-        width: 100%;
         font-size: 14px;
         font-weight: bold;
-        margin-top: 10px;
         margin-bottom: 10px;
-        padding:0 16px;
+        padding:0 20px;
+        margin-top: 10px;
     }
 
     .homeScylla{
-        margin-top: 500px;
-        margin-left: 350px;
-        padding: 0 50px; 
+        margin-top: 370px;
+        width: 270px;
     }
 
     .btn-login{

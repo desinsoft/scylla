@@ -48,4 +48,32 @@ export class LoginPage {
   goHomePage(){
     this.navCtrl.setRoot(TabsPage);
   }
+
+  recover(){
+    const alert = this.alertCtrl.create({
+      title: 'Recover your password',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Email'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: data => {
+            "We have sent your current password to the entered email";
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 }
