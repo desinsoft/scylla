@@ -1,11 +1,13 @@
+//import { Camera } from '@ionic-native/camera';
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { RegisterPage } from '../../pages/register/register';
 import { TabsPage } from '../../pages/tabs/tabs';
 
 import { User } from '../../models/user';
+//import { EmailComposer } from '@ionic-native/email-composer';
 
 @Component({
   selector: 'page-login',
@@ -15,7 +17,7 @@ export class LoginPage {
   user = {} as User;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController, private loadingCtrl: LoadingController ) {
   }
 
   async login(user: User){
@@ -69,7 +71,37 @@ export class LoginPage {
         {
           text: 'Aceptar',
           handler: data => {
-            "We have sent your current password to the entered email";
+            let loading = this.loadingCtrl.create({
+              dismissOnPageChange: true,
+              content: 'Reseting your password'
+            });
+            loading.present();
+            /*
+            let email = {
+              to: 'jossenino@gmail.com',
+              subject: 'Your password - Scylla',
+              body: 'This is your passowrd for login into app Scylla ->',
+              isHtml: true
+            };
+            this.emailComposer.open(email);
+            */
+            this.auth.auth.sendPasswordResetEmail(data.email).then(()=>{
+              loading.dismiss().then(() =>{
+                let alert = this.alertCtrl.create({
+                  title: 'Check your email',
+                  subTitle: 'Password reset successful',
+                  buttons: ['OK']
+                });
+                alert.present();
+              })
+            }, error => {
+              let alert = this.alertCtrl.create({
+                title: 'Error resetting password',
+                subTitle: error.message,
+                buttons: ['OK']
+              });
+              alert.present();
+            });
           }
         }
       ]

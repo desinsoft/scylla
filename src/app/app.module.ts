@@ -21,6 +21,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
+import { Camera } from '@ionic-native/camera';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     StatusBar,
     SplashScreen,
     Encryption,
+    Camera,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
