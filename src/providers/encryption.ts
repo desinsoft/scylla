@@ -12,10 +12,10 @@ export class Encryption{
             account + typeAccount,
             this.base64Key,
             { iv: this.iv });
-        console.log('encrypted = ' + encrypted);
+        //console.log('encrypted = ' + encrypted);
         
         var ciphertext = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
-        console.log('ciphertext = ' + ciphertext);
+        //console.log('ciphertext = ' + ciphertext);
         
         return ciphertext;
       }
@@ -31,7 +31,7 @@ export class Encryption{
             this.base64Key,
             { iv: this.iv });
         var descrString = decrypted.toString(CryptoJS.enc.Utf8);
-        console.log('decrypted='+ descrString);
+        //console.log('decrypted='+ descrString);
       }
 
       public getPasswordEcrypted(ciphertext: string): string {
@@ -45,7 +45,7 @@ export class Encryption{
             this.base64Key,
             { iv: this.iv });
         var descrString = decrypted.toString(CryptoJS.enc.Utf8);
-        console.log('decrypted='+ descrString);
+        //console.log('decrypted='+ descrString);
 
         return descrString;
     }
@@ -56,10 +56,10 @@ export class Encryption{
             password + hash,
             this.base64Key,
             { iv: this.iv });
-        console.log('encrypted Password = ' + encryptedPassword);
+        //console.log('encrypted Password = ' + encryptedPassword);
         
         var ciphertext = encryptedPassword.ciphertext.toString(CryptoJS.enc.Base64);
-        console.log('ciphertext Password= ' + ciphertext);
+        //console.log('ciphertext Password= ' + ciphertext);
         
         return ciphertext;
     }

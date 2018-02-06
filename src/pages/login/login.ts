@@ -21,7 +21,20 @@ export class LoginPage {
   }
 
   async login(user: User){
+      let loading = this.loadingCtrl.create({
+        dismissOnPageChange: true,
+        content: 'Login'
+      });
+      loading.present();
       this.auth.auth.signInWithEmailAndPassword(user.email, user.password).then(auth => {
+        loading.dismiss().then(() =>{
+          let alert = this.alertCtrl.create({
+            title: 'Check your email',
+            subTitle: 'Login successful',
+            buttons: ['OK']
+          });
+          alert.present();
+        })
         this.navCtrl.setRoot(TabsPage);
       }).catch(function(error){
         // Handle Errors here.

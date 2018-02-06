@@ -17,7 +17,7 @@
   </div>
   <div class="row" *ngFor="let data of credentials | async">
     <div class="col">{{data.account}}</div>
-    <div class="col">{{data.password}}</div>
+    <div class="col">{{data.observation}}</div>
     <div class="col">
       <button ion-button color="secondary" (click)="viewCredential(data)"><ion-icon name="eye"></ion-icon></button>
       <button ion-button color="blue" (click)="updateCredential(data)"><ion-icon name="create"></ion-icon></button>

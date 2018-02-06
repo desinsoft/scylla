@@ -3,4 +3,5 @@ export interface Credentials {
     password: string;
     hash: string;
     accountID: string;
+    observation: string
 }
